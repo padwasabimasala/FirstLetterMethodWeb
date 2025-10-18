@@ -114,10 +114,9 @@ export default defineApp([
       ) || {};
 
       const verse =
-          ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
-            params.verse.toString()
-          ]
-        || "Verse not found";
+        ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
+          params.verse.toString()
+        ] || "Verse not found";
 
       return (
         <>
@@ -125,14 +124,13 @@ export default defineApp([
             Previous Verse
           </a>
 
-          <a href={`/flm/${nextBook}/${nextChapter}/${nextVerseNum}`}>
-            Next Verse
-          </a>
           <h1>
             {capitalize(params.book)} {params.chapter}:{params.verse}
           </h1>
           <h1>{firstLetters(verse)}</h1>
-          <h1>{verse}</h1>
+          <a href={`/flm/${nextBook}/${nextChapter}/${nextVerseNum}`}>
+            Next Verse
+          </a>
         </>
       );
     }),
