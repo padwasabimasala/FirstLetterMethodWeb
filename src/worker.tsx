@@ -5,6 +5,7 @@ import { Document } from "@/app/Document";
 import { setCommonHeaders } from "@/app/headers";
 import { Home } from "@/app/pages/Home";
 import capitalize from "@/utils/capitalize";
+import firstLetters from "./utils/firstLetters";
 
 // Import the JSON at module initialization so it's loaded into memory when
 // the server/worker boots. The file lives under `src/nlt.json`.
@@ -111,6 +112,14 @@ export default defineApp([
         params.chapter.toString(),
         params.verse.toString()
       ) || {};
+
+      const verse =
+        firstLetters(
+          ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
+            params.verse.toString()
+          ]
+        ) || "Verse not found";
+
       return (
         <>
           <a href={`/flm/${prevBook}/${prevChapter}/${prevVerseNum}`}>
@@ -123,11 +132,7 @@ export default defineApp([
           <h1>
             {capitalize(params.book)} {params.chapter}:{params.verse}
           </h1>
-          <p>
-            {ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
-              params.verse.toString()
-            ] || "Verse not found"}
-          </p>
+          <h1>{verse}</h1>
         </>
       );
     }),
