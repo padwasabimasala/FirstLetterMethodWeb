@@ -1,24 +1,10 @@
-# RedwoodSDK Minimal Starter
+# First Letter Method Web
 
-This is the starter project for RedwoodSDK. It's a template designed to get you up and running as quickly as possible.
+Practice Bible memorization with the first letter method
 
-Create your new project:
+Try it at [https://first-letter-swiper.bible-memory-club.workers.dev/flm/matthew/5/1]
 
-```shell
-npx create-rwsdk my-project-name
-cd my-project-name
-npm install
-```
-
-## Running the dev server
-
-```shell
-npm run dev
-```
-
-Point your browser to the URL displayed in the terminal (e.g. `http://localhost:5173/`). You should see a "Hello World" message in your browser.
-
-## Further Reading
+## Built with Redwood SDK and hosted on Cloudflare
 
 - [RedwoodSDK Documentation](https://docs.rwsdk.com/)
 - [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers)
