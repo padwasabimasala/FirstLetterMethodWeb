@@ -9,7 +9,7 @@ import firstLetters from "./utils/firstLetters";
 
 // Import the JSON at module initialization so it's loaded into memory when
 // the server/worker boots. The file lives under `src/nlt.json`.
-import nltData from "./nlt.json";
+import nltData from "./matthew.json";
 import type { NLTData } from "../types/nlt.d";
 
 export type AppContext = {
