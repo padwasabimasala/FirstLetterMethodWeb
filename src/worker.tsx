@@ -4,6 +4,7 @@ import { defineApp } from "rwsdk/worker";
 import { Document } from "@/app/Document";
 import { setCommonHeaders } from "@/app/headers";
 import { Home } from "@/app/pages/Home";
+import { Browser } from "@/app/pages/Browser";
 import capitalize from "@/utils/capitalize";
 import firstLetters from "./utils/firstLetters";
 
@@ -87,11 +88,11 @@ function prevVerse(book, chapter, verse) {
 export default defineApp([
   setCommonHeaders(),
   ({ ctx }) => {
-    // attach preloaded nlt data to the context so routes can access it from memory
     ctx.nlt = nltData as unknown as NLTData;
   },
   render(Document, [
     route("/", Home),
+    route("/browser/:book/:chapter/:verse", Browser),
     route("/flm/:book/:chapter/:verse", function ({ request, params, ctx }) {
       const {
         book: nextBook,
@@ -114,10 +115,9 @@ export default defineApp([
       ) || {};
 
       const verse =
-          ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
-            params.verse.toString()
-          ]
-        || "Verse not found";
+        ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
+          params.verse.toString()
+        ] || "Verse not found";
 
       return (
         <>
