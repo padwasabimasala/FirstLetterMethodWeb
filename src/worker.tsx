@@ -9,7 +9,7 @@ import firstLetters from "./utils/firstLetters";
 
 // Import the JSON at module initialization so it's loaded into memory when
 // the server/worker boots. The file lives under `src/nlt.json`.
-import nltData from "./matthew.json";
+import nltData from "./nlt.json";
 import type { NLTData } from "../types/nlt.d";
 
 export type AppContext = {
@@ -114,9 +114,10 @@ export default defineApp([
       ) || {};
 
       const verse =
-        ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
-          params.verse.toString()
-        ] || "Verse not found";
+          ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
+            params.verse.toString()
+          ]
+        || "Verse not found";
 
       return (
         <>
