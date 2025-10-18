@@ -12,6 +12,17 @@ import firstLetters from "./utils/firstLetters";
 import nltData from "./matthew.json";
 import type { NLTData } from "../types/nlt.d";
 
+import { CSSProperties } from "react";
+
+const style: CSSProperties = {
+  fontSize: 48, // number = px
+  marginTop: 10, // number = px
+  backgroundColor: "#f0f0f0", // light gray background
+  padding: "20px", // string with units
+  borderRadius: "8px", // rounded corners
+  textAlign: "center", // center the text
+};
+
 export type AppContext = {
   nlt: NLTData;
 };
@@ -127,7 +138,7 @@ export default defineApp([
           <h1>
             {capitalize(params.book)} {params.chapter}:{params.verse}
           </h1>
-          <h1>{firstLetters(verse)}</h1>
+          <h1 style={style}>{firstLetters(verse)}</h1>
           <a href={`/flm/${nextBook}/${nextChapter}/${nextVerseNum}`}>
             Next Verse
           </a>
