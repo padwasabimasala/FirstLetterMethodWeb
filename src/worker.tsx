@@ -23,6 +23,19 @@ const style: CSSProperties = {
   textAlign: "center", // center the text
 };
 
+const button: CSSProperties = {
+  display: "inline-block",
+  padding: "10px 20px",
+  backgroundColor: "#007bff",
+  color: "white",
+  textDecoration: "none",
+  borderRadius: "5px",
+  textAlign: "center",
+  cursor: "pointer",
+  transition: "background-color 0.2s",
+  marginRight: "10px",
+};
+
 export type AppContext = {
   nlt: NLTData;
 };
@@ -131,17 +144,23 @@ export default defineApp([
 
       return (
         <>
-          <a href={`/flm/${prevBook}/${prevChapter}/${prevVerseNum}`}>
-            Previous Verse
-          </a>
-
           <h1>
             {capitalize(params.book)} {params.chapter}:{params.verse}
           </h1>
-          <h1 style={style}>{firstLetters(verse)}</h1>
-          <a href={`/flm/${nextBook}/${nextChapter}/${nextVerseNum}`}>
+          <a
+            style={button}
+            href={`/flm/${prevBook}/${prevChapter}/${prevVerseNum}`}
+          >
+            Previous Verse
+          </a>
+          <a
+            style={button}
+            href={`/flm/${nextBook}/${nextChapter}/${nextVerseNum}`}
+          >
             Next Verse
           </a>
+
+          <h1 style={style}>{firstLetters(verse)}</h1>
         </>
       );
     }),
