@@ -114,11 +114,9 @@ export default defineApp([
       ) || {};
 
       const verse =
-        firstLetters(
-          ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
-            params.verse.toString()
-          ]
-        ) || "Verse not found";
+        ctx.nlt[capitalize(params.book)]?.[params.chapter.toString()]?.[
+          params.verse.toString()
+        ] || "Verse not found";
 
       return (
         <>
@@ -132,6 +130,7 @@ export default defineApp([
           <h1>
             {capitalize(params.book)} {params.chapter}:{params.verse}
           </h1>
+          <h1>{firstLetters(verse)}</h1>
           <h1>{verse}</h1>
         </>
       );
