@@ -14,26 +14,49 @@ import type { NLTData } from "../types/nlt.d";
 
 import { CSSProperties } from "react";
 
-const style: CSSProperties = {
+const header: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
+
+const verseStyle: CSSProperties = {
   fontSize: 48, // number = px
   marginTop: 10, // number = px
   backgroundColor: "#f0f0f0", // light gray background
   padding: "20px", // string with units
   borderRadius: "8px", // rounded corners
   textAlign: "center", // center the text
+  transition: "background-color 0.2s",
+  boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)", // drop shadow
+};
+
+const buttonContainer: CSSProperties = {
+  position: "fixed",
+  bottom: "20px",
+  left: "50%",
+  transform: "translateX(-50%)",
+  display: "flex",
+  gap: "10px",
 };
 
 const button: CSSProperties = {
-  display: "inline-block",
+  textDecoration: "none",
   padding: "10px 20px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minWidth: "120px",
   backgroundColor: "#007bff",
   color: "white",
-  textDecoration: "none",
+  border: "none",
   borderRadius: "5px",
-  textAlign: "center",
   cursor: "pointer",
-  transition: "background-color 0.2s",
-  marginRight: "10px",
+};
+
+const buttonSm: CSSProperties = {
+  ...button,
+  minWidth: "10px",
 };
 
 export type AppContext = {
@@ -144,23 +167,30 @@ export default defineApp([
 
       return (
         <>
-          <h1>
+          <h1 style={header}>
             {capitalize(params.book)} {params.chapter}:{params.verse}
           </h1>
-          <a
-            style={button}
-            href={`/flm/${prevBook}/${prevChapter}/${prevVerseNum}`}
-          >
-            Previous Verse
-          </a>
-          <a
-            style={button}
-            href={`/flm/${nextBook}/${nextChapter}/${nextVerseNum}`}
-          >
-            Next Verse
-          </a>
-
-          <h1 style={style}>{firstLetters(verse)}</h1>
+          <h1 style={verseStyle}>{firstLetters(verse)}</h1>
+          <div style={buttonContainer}>
+            <a style={buttonSm} href={`/flm/Matthew/5/1`}>
+              «
+            </a>
+            <a
+              style={button}
+              href={`/flm/${prevBook}/${prevChapter}/${prevVerseNum}`}
+            >
+              Previous Verse
+            </a>
+            <a
+              style={button}
+              href={`/flm/${nextBook}/${nextChapter}/${nextVerseNum}`}
+            >
+              Next Verse
+            </a>
+            <a style={buttonSm} href={`/flm/Matthew/7/28`}>
+              »
+            </a>
+          </div>
         </>
       );
     }),
